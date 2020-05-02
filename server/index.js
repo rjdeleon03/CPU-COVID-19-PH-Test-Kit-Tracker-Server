@@ -8,7 +8,15 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+// Setup routes
+const cases = require("../routes/cases.route");
+app.use("/cases/", cases)
+
+
+const tests = require("../routes/tests.route");
+app.use("/tests/", tests)
+
 const port = process.env.PORT || 5000;
 
 // Start server
-app.listen(port, () => console.log("Started on port ${port}"));
+app.listen(port, () => console.log(`Started on port ${port}`));
