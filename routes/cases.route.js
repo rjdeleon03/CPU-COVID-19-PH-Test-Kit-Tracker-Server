@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const Papa = require("papaparse");
 
 const { StringStream } = require("scramjet");
 const request = require("request");
@@ -13,7 +12,7 @@ router.get("/rankings", (req, res) => {
         .CSVParse()
         .consume(object => {
             worldData.push(object);
-            console.log(worldData.length);
+            console.log(object);
         })
         .then(() => {
             console.log("Done!");
